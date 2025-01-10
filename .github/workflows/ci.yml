@@ -57,6 +57,8 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      - run: yarn add -D postcss
+
       - name: Publish to GitHub Pages
         run: yarn build
 
@@ -64,7 +66,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
-          overwrite: true
 
   # Deployment job
   deploy:
