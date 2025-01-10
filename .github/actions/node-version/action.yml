@@ -1,0 +1,12 @@
+name: node-version
+description: Determine node version via `.node-version` file
+outputs:
+  node-version:
+    description: 'Node.js version'
+    value: ${{ steps.detect-node-version.outputs.node-version }}
+runs:
+  using: "composite"
+  steps:
+    - id: detect-node-version
+      run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
+      shell: bash
